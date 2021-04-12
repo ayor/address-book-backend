@@ -63,6 +63,10 @@ if(user){
         const username = text.split('2*')[1];
 
         const contact = new Contact(username,`${username}@email.com`, `${username}'s address`, "+234XXXXXXXXX");
+        const savedContactRef = await contact.save();
+        const key = savedContactRef.key;
+
+        await User.findByIdAndUpdate(user.key, { key, ...contact });
 
         response = `END ${contact.username} as been added as a contact, kindly visit https://adress-book-versus.netlify.app to update the contact's details  `
     }
