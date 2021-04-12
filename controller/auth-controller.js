@@ -9,7 +9,7 @@ exports.createUser = async (req, res, next) => {
         const email = req.body.email;
         const password = req.body.password;
         const hashedPassword = await bcrypt.hash(password, 12);
-        let admin = await (await Contact.findById("-MY2FDZVmiX6qJ2bIwsu")).val();
+        let admin = await (await Contact.findById(process.env.ADMIN_ID)).val();
 
         const userData = await User.GetUsers();
 
