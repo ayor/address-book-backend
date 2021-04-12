@@ -1,0 +1,21 @@
+{
+  "name": "address-book-backend",
+  "version": "1.0.0",
+  "description": "provides backend configuration and api services to the address-book front end ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "FIREBASE_DATABASE_URL=https://adreess-book-default-rtdb.firebaseio.com node app.js",
+    "start-dev": "nodemon app.js"
+  },
+  "author": "Ayomide, Dosumu",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "firebase-admin": "^9.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.7"
+  }
+}
