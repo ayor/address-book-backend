@@ -1,6 +1,7 @@
 {
     "env":{
         "FIREBASE_DATABASE_URL":"https://adreess-book-default-rtdb.firebaseio.com",
-        "SALT":"AW$&TGSG(Q()12739)*@^#YE*(@YHE(O"
+        "SALT":"AW$&TGSG(Q()12739)*@^#YE*(@YHE(O",
+        "ADMIN_ID":"-MY2FDZVmiX6qJ2bIwsu"
     }
 }
