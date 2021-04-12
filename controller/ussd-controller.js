@@ -26,7 +26,7 @@ exports.handleUssd = async (req, res, next) => {
                     
                     These are your contact(s)
                     ${contacts.map((contact, ind) => {
-                                    return `${ind + 1}. Name - ${contact.username}`
+                                    return `${ind + 1}. Name - ${contact.username} \n`
                                 })}
                     `;
                 } else {
