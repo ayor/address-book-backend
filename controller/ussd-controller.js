@@ -15,7 +15,7 @@ exports.handleUssd = async (req, res, next) => {
         const result = FLATTEN_FIREBASE_DATA(users.val());
         const user = result.find(el => el.phone === phoneNumber);
         const contacts = FLATTEN_FIREBASE_DATA(user.contacts);
-
+        
         let response = '';
 
         switch (text) {
@@ -37,10 +37,10 @@ exports.handleUssd = async (req, res, next) => {
                 if (user) {
                     // Business logic for first level response
                     // This is a terminal request. Note how we start the response with END
-                    response = `CON Kindly visit https://adress-book-versus.netlify.app to add a contact
+                    response = `CON Kindly enter the contact's name
                 `;
                 } else {
-                    response = `CON Kindly visit https://adress-book-versus.netlify.app to sign up for this service`;
+                    response = `END Kindly visit https://adress-book-versus.netlify.app to sign up for this service`;
                 }
                 break;
             case '2*1':
@@ -57,6 +57,14 @@ exports.handleUssd = async (req, res, next) => {
                 1. My contacts
                 2. Add a new contact`;
                 break;
+        }
+
+        if(text.length > 2){
+            const username = text.split('2*')[1];
+
+            const contact = new Contact(username,`${username}@email.com`, `${username}'s address`, "+234XXXXXXXXX");
+
+            response = `END ${contact.username} as been added as a contact, visit https://adress-book-versus.netlify.app to update the contact's details  `
         }
 
 
