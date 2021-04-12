@@ -58,18 +58,13 @@ if(user){
         const savedContactRef = await contact.save();
         const key = savedContactRef.key;
 
-        await User.findByIdAndUpdate(user.key, { key, ...contact });
+        await User.findByIdAndUpdate(user.id, { key, ...contact });
 
         response = `END ${contact.username} as been added as a contact, kindly visit https://adress-book-versus.netlify.app to update the contact's details  `
     }
 }else{
     response = `END Kindly visit https://adress-book-versus.netlify.app to sign up for this service`;
 }
-        
-
-
-
-
         // Send the response back to the API
         res.set('Content-Type: text/plain');
         res.send(response);
