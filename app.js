@@ -4,9 +4,12 @@ const port = process.env.PORT || 5000;
 
 const authRoute = require('./route/auth-route');
 const contactRoute = require('./route/contact-route');
+const ussdRoute = require('./route/ussd-route');
 const app = express();
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use((req, res, next )=>{
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Methods", "GET", "POST", "PATCH");
@@ -16,6 +19,7 @@ app.use((req, res, next )=>{
 });
 
 app.use('/auth', authRoute);
+app.use('/ussd', ussdRoute);
 app.use('/contact', contactRoute)
 
 app.use((error, req, res, next)=>{
