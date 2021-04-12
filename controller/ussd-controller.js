@@ -47,7 +47,7 @@ exports.handleUssd = async (req, res, next) => {
                 if (user) {
                     // Business logic for first level response
                     // This is a terminal request. Note how we start the response with END
-                    response = `CON Kindly enter the contact's name
+                    response = `CON ${user.username}, Kindly enter the contact's name
                 `;
                 } 
                 break;
@@ -58,14 +58,18 @@ exports.handleUssd = async (req, res, next) => {
                 2. Add a new contact`;
                 break;
         }
+if(user){
+    if(text.length > 2){
+        const username = text.split('2*')[1];
 
-        if(text.length > 2){
-            const username = text.split('2*')[1];
+        const contact = new Contact(username,`${username}@email.com`, `${username}'s address`, "+234XXXXXXXXX");
 
-            const contact = new Contact(username,`${username}@email.com`, `${username}'s address`, "+234XXXXXXXXX");
-
-            response = `END ${contact.username} as been added as a contact, visit https://adress-book-versus.netlify.app to update the contact's details  `
-        }
+        response = `END ${contact.username} as been added as a contact, kindly visit https://adress-book-versus.netlify.app to update the contact's details  `
+    }
+}else{
+    response = `END Kindly visit https://adress-book-versus.netlify.app to sign up for this service`;
+}
+        
 
 
 
