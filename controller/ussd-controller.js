@@ -29,12 +29,8 @@ exports.handleUssd = async (req, res, next) => {
                 response = `CON Hello ${user.username}, 
                 
                 These are your contact(s)
-                ${contacts.forEach((contact, ind) => {
-                    return `${ind+1}
-                            Name - ${contact.username}
-                            Phone - ${contact.phone}
-                            Email - ${contact.email}
-                            Address - ${contact.address}`
+                ${contacts.map((contact, ind) => {
+                    return `${ind+1}. Name - ${contact.username}`
                 })}
                 `;
             } else {
