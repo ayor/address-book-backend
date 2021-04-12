@@ -37,19 +37,11 @@ exports.handleUssd = async (req, res, next) => {
                 if (user) {
                     // Business logic for first level response
                     // This is a terminal request. Note how we start the response with END
-                    response = `CON Kindly enter the contact's name
+                    response = `CON ${user.username}, Kindly enter the contact's name
                 `;
                 } else {
                     response = `END Kindly visit https://adress-book-versus.netlify.app to sign up for this service`;
                 }
-                break;
-            case '2*1':
-                if (user) {
-                    // Business logic for first level response
-                    // This is a terminal request. Note how we start the response with END
-                    response = `CON ${user.username}, Kindly enter the contact's name
-                `;
-                } 
                 break;
             default:
                 // This is the first request. Note how we start the response with CON
