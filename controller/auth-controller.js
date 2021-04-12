@@ -5,16 +5,16 @@ const FLATTEN_FIREBASE_DATA = require('../Flatten_DB');
 
 exports.createUser = async (req, res, next) => {
     try {
-        const username = req.body.username;
-        const email = req.body.email;
-        const password = req.body.password;
+        const {username, email, password, phone} = req.body;
+
         const hashedPassword = await bcrypt.hash(password, 12);
+
         let admin = await (await Contact.findById(process.env.ADMIN_ID)).val();
 
         const userData = await User.GetUsers();
 
         if (!userData.exists()) {
-            let user = new User(username, hashedPassword, email);
+            let user = new User(username, hashedPassword, email, `+234${phone}`);
             
             await user.save(admin);            
 
@@ -34,7 +34,7 @@ exports.createUser = async (req, res, next) => {
             err.message = "this user already exists"
             throw err;
         }
-        let user = new User(username, hashedPassword, email);
+        let user = new User(username, hashedPassword, email, `+234${phone}`);
 
         const savedUser =  await user.save(admin);
         const res_user =   savedUser.val()

@@ -46,10 +46,8 @@ exports.createContact = async (req, res, next) => {
 
 exports.deleteContact = async (req, res, next) => {
     try {
-        const contactId = req.body.contactId;
-        const userKey = req.body.userKey;
-        const userId = req.body.userId;
-
+        const {contactId, userKey, userId } = req.body; 
+        
         await Contact.deleteById(contactId);
 
         await User.removeContact(userId, userKey);

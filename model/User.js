@@ -4,10 +4,11 @@ const userRef = db.ref('users');
 
 
 class User {
-    constructor(username, password, email, contacts) {
+    constructor(username, password, email, phone, contacts) {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.phone = phone;
         this.contacts = contacts;
     }
 
@@ -40,6 +41,7 @@ class User {
             username: this.username,
             password: this.password,
             email: this.email,
+            phone: this.phone
         });
 
         const adminData = {

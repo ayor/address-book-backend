@@ -17,7 +17,7 @@ class Contact {
     }
 
     static async findByIdAndUpdate(contactId, update){
-        return await contactRef.child(contactId).update(update)
+        return await contactRef.child(contactId).update(update);
     }
 
     static async deleteById(contactId){
